@@ -12,6 +12,9 @@ class Irankis(models.Model):
     pristatymas = models.BooleanField()
     kategorijos = models.ManyToManyField(Kategorija)
 
+    def rodyti_kategorijas(self):
+        return ', '.join(kategorija.name for kategorija in self.kategorijos.all()[:3])
+
     class Meta:
         verbose_name = "Įrankis"
         verbose_name_plural = "Įrankiai"

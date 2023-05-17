@@ -7,7 +7,7 @@ from irankis.models import Irankis, NuomosFaktas, Kategorija
 
 
 class IrankisAdmin(admin.ModelAdmin):
-    list_display = ('pavadinimas', 'galia', 'pristatymas')
+    list_display = ('pavadinimas', 'galia', 'pristatymas', 'rodyti_kategorijas')
 
 
 admin.site.register(Irankis, IrankisAdmin)
