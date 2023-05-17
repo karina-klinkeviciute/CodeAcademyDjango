@@ -17,7 +17,6 @@ class Irankis(models.Model):
         verbose_name_plural = "Įrankiai"
 
 
-
 class NuomosFaktas(models.Model):
     irankis = models.ForeignKey(Irankis, on_delete=models.SET_NULL, blank=True, null=True)
     pastabos = models.TextField()
