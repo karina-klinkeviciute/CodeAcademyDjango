@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from irankis.models import Irankis, NuomosFaktas, Kategorija
 
-
 # from irankis.models import Irankis, NuomosFaktas
 
 
