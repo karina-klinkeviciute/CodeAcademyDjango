@@ -4,6 +4,8 @@ from django.db import models
 class Kategorija(models.Model):
     pavadinimas = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.pavadinimas
 
 class Irankis(models.Model):
     pavadinimas = models.CharField(max_length=255)
@@ -13,7 +15,7 @@ class Irankis(models.Model):
     kategorijos = models.ManyToManyField(Kategorija)
 
     def rodyti_kategorijas(self):
-        return ', '.join(kategorija.name for kategorija in self.kategorijos.all()[:3])
+        return ', '.join(kategorija.pavadinimas for kategorija in self.kategorijos.all()[:3])
 
     class Meta:
         verbose_name = "Įrankis"

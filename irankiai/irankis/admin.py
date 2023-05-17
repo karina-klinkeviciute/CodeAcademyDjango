@@ -8,10 +8,13 @@ from irankis.models import Irankis, NuomosFaktas, Kategorija
 
 class IrankisAdmin(admin.ModelAdmin):
     list_display = ('pavadinimas', 'galia', 'pristatymas', 'rodyti_kategorijas')
+    list_filter = ('pristatymas', )
 
+class KategorijaAdmin(admin.ModelAdmin):
+    list_display = ('pavadinimas', )
 
+admin.site.register(Kategorija, KategorijaAdmin)
 admin.site.register(Irankis, IrankisAdmin)
 admin.site.register(NuomosFaktas)
-admin.site.register(Kategorija)
 
 
