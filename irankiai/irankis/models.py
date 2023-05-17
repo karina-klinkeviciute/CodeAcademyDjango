@@ -12,7 +12,9 @@ class Irankis(models.Model):
     pristatymas = models.BooleanField()
     kategorijos = models.ManyToManyField(Kategorija)
 
-
+    class Meta:
+        verbose_name = "Įrankis"
+        verbose_name_plural = "Įrankiai"
 
 
 
@@ -20,4 +22,6 @@ class NuomosFaktas(models.Model):
     irankis = models.ForeignKey(Irankis, on_delete=models.SET_NULL, blank=True, null=True)
     pastabos = models.TextField()
 
-
+    class Meta:
+        verbose_name = "Nuomos faktas"
+        verbose_name_plural = "Nuomos faktai"
