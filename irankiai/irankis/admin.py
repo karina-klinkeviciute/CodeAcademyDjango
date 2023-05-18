@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from irankis.models import Irankis, NuomosFaktas, Kategorija, IrankioVienetas
+from naudotojo_profilis.models import NaudotojoProfilis
 
 
 # from irankis.models import Irankis, NuomosFaktas
@@ -35,5 +36,6 @@ admin.site.register(IrankioVienetas, IrankioVienetasAdmin)
 admin.site.register(Kategorija, KategorijaAdmin)
 admin.site.register(Irankis, IrankisAdmin)
 admin.site.register(NuomosFaktas)
+
 
 

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # project apps
 
     'irankis',
+    'naudotojo_profilis'
 ]
 
 MIDDLEWARE = [

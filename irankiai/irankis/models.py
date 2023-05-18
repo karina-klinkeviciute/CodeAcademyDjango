@@ -1,5 +1,7 @@
 from django.db import models
 
+from naudotojo_profilis.models import NaudotojoProfilis
+
 
 class Kategorija(models.Model):
     pavadinimas = models.CharField(max_length=255)
@@ -13,6 +15,7 @@ class Irankis(models.Model):
     galia = models.IntegerField(blank=True, null=True)
     pristatymas = models.BooleanField()
     kategorijos = models.ManyToManyField(Kategorija)
+    naudotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE)
 
     def rodyti_kategorijas(self):
         return ', '.join(kategorija.pavadinimas for kategorija in self.kategorijos.all()[:3])
@@ -37,6 +40,8 @@ class IrankioVienetas(models.Model):
 class NuomosFaktas(models.Model):
     irankio_vienetas = models.ForeignKey(IrankioVienetas, on_delete=models.SET_NULL, blank=True, null=True)
     pastabos = models.TextField()
+    nuomotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE, related_name="nuomotojo_nuomos_faktai")
+    nuomininkas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE, related_name="nuomininko_nuomos_faktai")
 
     class Meta:
         verbose_name = "Nuomos faktas"
