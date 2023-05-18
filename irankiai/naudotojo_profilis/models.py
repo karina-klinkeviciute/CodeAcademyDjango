@@ -6,7 +6,7 @@ class NaudotojoProfilis(models.Model):
     naudotojas = models.ForeignKey(User, on_delete=models.CASCADE)
     ivertinimas = models.IntegerField()
 
-    def rodyti_irankius(self):
-        return ', '.join(irankis.pavadinimas for irankis in self.irankiai_set.all()[:3])
+    def visi_irankiai(self):
+        return ', '.join(irankis.pavadinimas for irankis in self.irankis_set.all()[:3])
 
-    rodyti_irankius.short_description = "Įrankiai"
+    visi_irankiai.short_description = "Įrankiai"
