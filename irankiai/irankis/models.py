@@ -31,6 +31,9 @@ class IrankioVienetas(models.Model):
     QR_kodas = models.CharField(max_length=255)
     ar_isnuomotas = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.irankis.pavadinimas} - {self.QR_kodas}"
+
 class NuomosFaktas(models.Model):
     irankio_vienetas = models.ForeignKey(IrankioVienetas, on_delete=models.SET_NULL, blank=True, null=True)
     pastabos = models.TextField()
