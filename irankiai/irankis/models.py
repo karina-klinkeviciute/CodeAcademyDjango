@@ -21,9 +21,18 @@ class Irankis(models.Model):
         verbose_name = "Įrankis"
         verbose_name_plural = "Įrankiai"
 
+    def __str__(self):
+        return self.pavadinimas
+
+class IrankioVienetas(models.Model):
+    irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE)
+    akumuliatoriaus_talpa = models.IntegerField(blank=True, null=True)
+    vietove = models.CharField(max_length=255)
+    QR_kodas = models.CharField(max_length=255)
+    ar_isnuomotas = models.BooleanField(default=False)
 
 class NuomosFaktas(models.Model):
-    irankis = models.ForeignKey(Irankis, on_delete=models.SET_NULL, blank=True, null=True)
+    irankio_vienetas = models.ForeignKey(IrankioVienetas, on_delete=models.SET_NULL, blank=True, null=True)
     pastabos = models.TextField()
 
     class Meta:
