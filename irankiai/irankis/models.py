@@ -17,13 +17,19 @@ class Irankis(models.Model):
     kategorijos = models.ManyToManyField(Kategorija)
     naudotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE)
 
+
+    # parašom funkciją, kuri atrenka pirmas tris kategorijas. Paskui ją naudosim Admin'e, kad ten galėtume parodyti
+    # šituos dalykus sąraše
     def rodyti_kategorijas(self):
         return ', '.join(kategorija.pavadinimas for kategorija in self.kategorijos.all()[:3])
 
     class Meta:
+
+        # kad rodytų rvarkingus lietuviškus pavadinimus
         verbose_name = "Įrankis"
         verbose_name_plural = "Įrankiai"
 
+    # kad admin aplinkoje (ir kitur) rodytų tvarkingai daikto pavadinimą, o ne "Irankisobject1" ar panašiai
     def __str__(self):
         return self.pavadinimas
 
