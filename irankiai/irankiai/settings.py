@@ -118,6 +118,7 @@ LANGUAGE_CODE = 'lt-lt'
 TIME_ZONE = 'Europe/Vilnius'
 # USE_DEPRECATED_PYTZ = True
 
+# Įjungiam lokalizaciją, kalbas ir laiko zonas
 USE_I18N = True
 
 USE_L10N = True
