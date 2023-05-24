@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div> Naudotojo vardas: {{ naudotojas.naudotojas.username }}, </div>
+    <div> Vardas: {{ naudotojas.naudotojas.first_name }}, </div>
+
+    <div>   Ar aktyvus: {% if naudotojas.naudotojas.is_active %} Taip {% else %} Ne {% endif %},</div>
+
+    <div>   jo įvertinimas: {{ naudotojas.ivertinimas }} </div>
+
+{% endblock content %}

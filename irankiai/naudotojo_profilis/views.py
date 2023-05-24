@@ -12,3 +12,7 @@ def naudotojai(request):
     }
 
     return render(request, "naudotojai.html", context=context)
+
+def naudotojas(request, naudotojo_id):
+    naudotojo_info = NaudotojoProfilis.objects.get(pk=naudotojo_id)
+    return render(request, "naudotojas.html", context={"naudotojas": naudotojo_info})
