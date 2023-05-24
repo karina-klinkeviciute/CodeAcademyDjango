@@ -4,8 +4,15 @@
     <ul>
     {% for naudotojas in naudotojai %}
         <li>
-        Naudotojo vardas: <a href="{% url "naudotojas" naudotojas.id %}"> {{ naudotojas.naudotojas.username }} </a>, jo įvertinimas: {{ naudotojas.ivertinimas }}
+        Naudotojo vardas: <a href="{% url "naudotojas" naudotojas.id %}"> {{ naudotojas.naudotojas.username }} </a>,
+            <br>
+
+
+
+            jo įvertinimas: {{ naudotojas.ivertinimas }}
         </li>
     {% endfor %}
     </ul>
+
 {% endblock content %}
+
