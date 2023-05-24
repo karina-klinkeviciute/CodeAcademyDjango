@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul>
+    {% for naudotojas in naudotojai %}
+        <li>
+        Naudotojo vardas: {{ naudotojas.naudotojas.username }}, jo įvertinimas: {{ naudotojas.ivertinimas }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}
