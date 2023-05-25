@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <h1>Įrankių sąrašas</h1>
+  {% if irankis_list %}
+  <ul>
+    {% for irankis in irankis_list %}
+      <li>
+        <a href="{{ irankis.id }}">{{ irankis.pavadinimas }}</a> ({{irankis.naudotojas.naudotojas.first_name}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Įrankių nėra.</p>
+  {% endif %}
+
+
+{% endblock %}
