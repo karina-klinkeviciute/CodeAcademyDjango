@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
 
-from irankis.models import Irankis
 from naudotojo_profilis.models import NaudotojoProfilis
 
 
@@ -20,6 +18,3 @@ def naudotojas(request, naudotojo_id):
     return render(request, "naudotojas.html", context={"naudotojas": naudotojo_info})
 
 
-class IrankiaiView(ListView):
-    model = Irankis
-    template_name = "irankiai.html"
