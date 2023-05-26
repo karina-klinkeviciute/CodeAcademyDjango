@@ -26,7 +26,20 @@ class IrankiaiView(ListView):
     model = Irankis
     template_name = "irankiai.html"
 
+    # jei norim, kad grąžintų tik išfiltruotus (šiuo atveju tik tuos, kurie turi pristatymą):
+    # queryset = Irankis.objects.filter(pristatymas=True)
 
+    def get_queryset(self):
+
+        # čia galimi papildomi veiksmai
+
+        return Irankis.objects.filter(pristatymas=True)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["papildoma_informacija"] = "tiesiog bet koks tekstas"
+
+        return context
 class IrankisView(DetailView):
     model = Irankis
     template_name = "irankis.html"
