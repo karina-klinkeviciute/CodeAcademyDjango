@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 
 from naudotojo_profilis.models import NaudotojoProfilis
@@ -22,6 +23,10 @@ class Irankis(models.Model):
     # šituos dalykus sąraše
     def rodyti_kategorijas(self):
         return ', '.join(kategorija.pavadinimas for kategorija in self.kategorijos.all()[:3])
+
+    @admin.display(ordering='naudotojo_duomenys', description='Naudotojo duomenys')
+    def get_naudotojo_vardas_pavarde(self):
+        return f"{self.naudotojas.naudotojas.first_name} {self.naudotojas.naudotojas.last_name}"
 
     class Meta:
 
