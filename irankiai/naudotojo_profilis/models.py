@@ -10,3 +10,6 @@ class NaudotojoProfilis(models.Model):
         return ', '.join(irankis.pavadinimas for irankis in self.irankis_set.all()[:3])
 
     visi_irankiai.short_description = "Įrankiai"
+
+    def __str__(self):
+        return f"{self.naudotojas.first_name} {self.naudotojas.last_name}"
