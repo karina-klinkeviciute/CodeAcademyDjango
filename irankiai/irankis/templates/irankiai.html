@@ -6,6 +6,9 @@
   <ul>
     {% for irankis in irankis_list %}
       <li>
+        {% if irankis.nuotrauka %}
+            <a href="{{ irankis.id }}"><img src="{{ irankis.nuotrauka.url }}" width="100"></a>
+        {% endif %}
         <a href="{{ irankis.id }}">{{ irankis.pavadinimas }}</a> ({{irankis.naudotojas.naudotojas.first_name}})
       </li>
     {% endfor %}
