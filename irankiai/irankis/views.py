@@ -25,15 +25,16 @@ def index(request):
 class IrankiaiView(ListView):
     model = Irankis
     template_name = "irankiai.html"
+    paginate_by = 3
 
     # jei norim, kad grąžintų tik išfiltruotus (šiuo atveju tik tuos, kurie turi pristatymą):
-    # queryset = Irankis.objects.filter(pristatymas=True)
+    queryset = Irankis.objects.filter()
 
-    def get_queryset(self):
-
-        # čia galimi papildomi veiksmai
-
-        return Irankis.objects.filter(pristatymas=True)
+    # def get_queryset(self):
+    #
+    #     # čia galimi papildomi veiksmai
+    #
+    #     return Irankis.objects.filter(pristatymas=True)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
