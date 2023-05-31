@@ -17,6 +17,7 @@ class Irankis(models.Model):
     pristatymas = models.BooleanField()
     kategorijos = models.ManyToManyField(Kategorija)
     naudotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE)
+    nuotrauka = models.ImageField(upload_to="irankis", null=True, blank=True)
 
 
     # parašom funkciją, kuri atrenka pirmas tris kategorijas. Paskui ją naudosim Admin'e, kad ten galėtume parodyti
