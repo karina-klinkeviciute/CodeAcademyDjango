@@ -6,11 +6,15 @@
 
   <p><strong>Naudotojas:</strong> <a href="{% url 'naudotojas' irankis.naudotojas.pk %}">{{ irankis.naudotojas.naudotojas.username }}</a></p>
   <p><strong>Pavadinimas:</strong> {{ irankis.pavadinimas }}</p>
+  {% if irankis.nuotrauka %}
+    <p><img src="{{ irankis.nuotrauka.url }}" width="200"></p>
+  {% endif %}
   <p><strong>Aprašymas:</strong> {{ irankis.aprasymas }}</p>
     {% if irankis.galia %}
         <p><strong>Galia:</strong> {{ irankis.galia }}</p>
     {% endif %}
   <p><strong>Ar pristato:</strong> {% if irankis.pristatymas %} Taip {% else %} Ne {% endif %}</p>
+
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Įrankio vienetai:</h4>
@@ -21,6 +25,7 @@
             <li>Akumuliatoriaus talpa: {{ irankio_vienetas.akumuliatoriaus_talpa }}</li>
             <li>Vietove: {{ irankio_vienetas.vietove }}</li>
             <li>Ar išnuomotas: {% if irankio_vienetas.ar_isnuomotas %} Taip {% else %} Ne {% endif %}</li>
+
         </ul>
     {% endfor %}
   </div>
