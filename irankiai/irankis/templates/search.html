@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Paieškos pagal "{{query}}" rezultatai:</h1>
+  </br>
+  {% if irankiai %}
+  <ul>
+    {% for irankis in irankiai %}
+      <li>
+        <a href="{% url 'irankis-detail' irankis.id %}">{{ irankis.pavadinimas }}</a> ({{irankis.get_naudotojo_vardas_pavarde}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Oops. Nieko neradome :(</p>
+  {% endif %}
+
+  {% endblock %}
