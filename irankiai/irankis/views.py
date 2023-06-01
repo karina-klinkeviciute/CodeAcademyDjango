@@ -11,12 +11,15 @@ def index(request):
     # suskai2iuojam reikiamus duomenis
     irankiu_kiekis = Irankis.objects.count()
     irankiu_vienetu_kiekis = IrankioVienetas.objects.count()
-
+    apsilankymu_kiekis = request.session.get("apsilankymai", 0)
+    apsilankymu_kiekis += 1
+    request.session["apsilankymai"] = apsilankymu_kiekis
 
     # į šabloną turi b8ti paduodamas žodynas su duomenimmis
     context = {
         "irankiu_kiekis": irankiu_kiekis,
-        "irankiu_vienetu_kiekis": irankiu_vienetu_kiekis
+        "irankiu_vienetu_kiekis": irankiu_vienetu_kiekis,
+        "apsilankymai": apsilankymu_kiekis
     }
 
     # žodynas su duomenimis per kintamąjį context sujungiamas su šablonu index ir grąžinamas į naršyklę
