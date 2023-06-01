@@ -21,6 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     # pridedam 5ranki7 nuorodas prie vis7 nuorod7
     path('irankiai/', include('irankis.urls')),
     path('naudotojai/', include('naudotojo_profilis.urls'))
