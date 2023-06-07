@@ -15,7 +15,7 @@ def index(request):
     apsilankymu_kiekis += 1
     request.session["apsilankymai"] = apsilankymu_kiekis
 
-    # į šabloną turi b8ti paduodamas žodynas su duomenimmis
+    # į šabloną turi būti paduodamas žodynas su duomenimmis
     context = {
         "irankiu_kiekis": irankiu_kiekis,
         "irankiu_vienetu_kiekis": irankiu_vienetu_kiekis,
