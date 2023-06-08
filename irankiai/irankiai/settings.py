@@ -154,3 +154,5 @@ EMAIL_HOST_USER = 'acedemycode@gmail.com'
 # el. pašto adresas iš kurio siųsite
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
+
+STATIC_ROOT = Path(BASE_DIR / 'static')
