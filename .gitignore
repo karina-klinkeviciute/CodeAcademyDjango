@@ -1,0 +1,5 @@
+.idea
+venv
+irankiai/media
+irankiai/db.sqlite3
+.env
