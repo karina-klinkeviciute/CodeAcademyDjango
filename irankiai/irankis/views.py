@@ -12,7 +12,7 @@ def index(request):
     irankiu_kiekis = Irankis.objects.count()
     irankiu_vienetu_kiekis = IrankioVienetas.objects.count()
     apsilankymu_kiekis = request.session.get("apsilankymai", 0)
-    apsilankymu_kiekis += "abc"
+    apsilankymu_kiekis += 1
     request.session["apsilankymai"] = apsilankymu_kiekis
 
     # į šabloną turi būti paduodamas žodynas su duomenimmis
