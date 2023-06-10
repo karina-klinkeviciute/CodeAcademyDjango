@@ -13,8 +13,14 @@ class Kategorija(models.Model):
 
 class Irankis(models.Model):
     pavadinimas = models.CharField(max_length=255)
+
+    # verbose name leidžia rašyti aiškesnius vartotojui rodomus laukų pavadinimus
     aprasymas = models.TextField(verbose_name="aprašymas", blank=True, null=True)
-    galia = models.IntegerField(verbose_name="elektrinio įrankio galia", blank=True, null=True)
+
+    # taip pat galima verbose_name nusiųsti vertimui
+    galia = models.IntegerField(verbose_name=_("elektrinio įrankio galia"), blank=True, null=True)
+
+
     pristatymas = models.BooleanField()
     kategorijos = models.ManyToManyField(Kategorija)
     naudotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE)
