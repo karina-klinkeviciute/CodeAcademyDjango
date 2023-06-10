@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from naudotojo_profilis.models import NaudotojoProfilis
 
@@ -12,8 +13,8 @@ class Kategorija(models.Model):
 
 class Irankis(models.Model):
     pavadinimas = models.CharField(max_length=255)
-    aprasymas = models.TextField(blank=True, null=True)
-    galia = models.IntegerField(blank=True, null=True)
+    aprasymas = models.TextField(verbose_name="aprašymas", blank=True, null=True)
+    galia = models.IntegerField(verbose_name="elektrinio įrankio galia", blank=True, null=True)
     pristatymas = models.BooleanField()
     kategorijos = models.ManyToManyField(Kategorija)
     naudotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE)
@@ -40,6 +41,13 @@ class Irankis(models.Model):
         return self.pavadinimas
 
 class IrankioVienetas(models.Model):
+    class VietoveChoices(models.TextChoices):
+        KAUNAS = "kaunas", _("Kaunas")
+        VILNIUS = "vilnius", _("Vilnius")
+        KLAIPEDA = "klaipeda", _("Klaipėda")
+        SIAULIAI = "siauliai", _("Šiauliai")
+        PANEVEZYS = "panevezys", _("Panevėžys")
+
     irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE)
     akumuliatoriaus_talpa = models.IntegerField(blank=True, null=True)
     vietove = models.CharField(max_length=255)
