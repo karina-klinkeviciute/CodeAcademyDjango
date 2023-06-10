@@ -56,7 +56,9 @@ class IrankioVienetas(models.Model):
 
     irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE)
     akumuliatoriaus_talpa = models.IntegerField(blank=True, null=True)
-    vietove = models.CharField(max_length=255)
+
+    # Vietovė galės būti tik iš viršuje nurodytų vietovės pasirinkimų
+    vietove = models.CharField(choices=VietoveChoices, max_length=255)
     QR_kodas = models.CharField(max_length=255)
     ar_isnuomotas = models.BooleanField(default=False)
 
