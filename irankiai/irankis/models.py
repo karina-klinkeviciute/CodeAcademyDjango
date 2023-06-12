@@ -46,6 +46,10 @@ class Irankis(models.Model):
     def __str__(self):
         return self.pavadinimas
 
+    # parašyti metodą "irankio_vienetu_kiekis"
+    # parašyti metodą "laisvi_irankio_vienetai"
+
+    # parašyti metodą, kuris tikrintų, ar konkrečiam laikotarpiui šį įrankį galima išsinuomoti
 class IrankioVienetas(models.Model):
     class VietoveChoices(models.TextChoices):
         KAUNAS = "kaunas", _("Kaunas")
@@ -62,6 +66,8 @@ class IrankioVienetas(models.Model):
     QR_kodas = models.CharField(max_length=255)
     ar_isnuomotas = models.BooleanField(default=False)
 
+    # ar_isnuomotas tikrinimą pagal nuomos faktus
+
     def __str__(self):
         return f"{self.irankis.pavadinimas} - {self.QR_kodas}"
 
@@ -70,7 +76,14 @@ class NuomosFaktas(models.Model):
     pastabos = models.TextField()
     nuomotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE, related_name="nuomotojo_nuomos_faktai")
     nuomininkas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE, related_name="nuomininko_nuomos_faktai")
+    # prideti lauka nuomos_pradzia
+    # prideti lauka nuomos_pabaiga
 
     class Meta:
         verbose_name = "Nuomos faktas"
         verbose_name_plural = "Nuomos faktai"
+
+    # pridėti metodą, kad suskaičiuotų nuomos ilgį valandomis/dienomis
+
+    # pridėti metodą, kuris skaičiuotų kainą
+
