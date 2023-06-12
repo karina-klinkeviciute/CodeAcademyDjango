@@ -66,7 +66,7 @@ class IrankioVienetas(models.Model):
     QR_kodas = models.CharField(max_length=255)
     ar_isnuomotas = models.BooleanField(default=False)
 
-    # ar_isnuomotas tikrinimą pagal nuomos faktus
+    # todo ar_isnuomotas tikrinimą pagal nuomos faktus
 
     def __str__(self):
         return f"{self.irankis.pavadinimas} - {self.QR_kodas}"
@@ -76,14 +76,14 @@ class NuomosFaktas(models.Model):
     pastabos = models.TextField()
     nuomotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE, related_name="nuomotojo_nuomos_faktai")
     nuomininkas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE, related_name="nuomininko_nuomos_faktai")
-    # prideti lauka nuomos_pradzia
-    # prideti lauka nuomos_pabaiga
+    # todo prideti lauka nuomos_pradzia
+    # todo prideti lauka nuomos_pabaiga
 
     class Meta:
         verbose_name = "Nuomos faktas"
         verbose_name_plural = "Nuomos faktai"
 
-    # pridėti metodą, kad suskaičiuotų nuomos ilgį valandomis/dienomis
+    # todo pridėti metodą, kad suskaičiuotų nuomos ilgį valandomis/dienomis
 
-    # pridėti metodą, kuris skaičiuotų kainą
+    # todo pridėti metodą, kuris skaičiuotų kainą
 
