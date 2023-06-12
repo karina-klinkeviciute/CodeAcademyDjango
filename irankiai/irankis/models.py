@@ -87,3 +87,6 @@ class NuomosFaktas(models.Model):
 
     # todo pridėti metodą, kuris skaičiuotų kainą
 
+    # todo pakeisti save metodą taip, kad kai išsaugojam nuomos faktą,
+    #  email nusiųstų pranešimą nuomotojui (gal ir nuomoninkui irgi)
+
