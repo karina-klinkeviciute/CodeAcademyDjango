@@ -15,6 +15,20 @@
     {% endif %}
   <p><strong>Ar pristato:</strong> {% if irankis.pristatymas %} Taip {% else %} Ne {% endif %}</p>
 
+  <div>
+  <h4>Atsiliepimai:</h4>
+  {% if irankis.irankioatsiliepimas_set.all %}
+    {% for atsiliepimas in irankis.irankioatsiliepimas_set.all %}
+      <hr>
+      <strong>{{ atsiliepimas.naudotojas }}</strong>, <em>{{ atsiliepimas.date_created}}</em>
+      <p>{{ atsiliepimas.atsiliepimas }}</p>
+    {% endfor %}
+  {% else %}
+    <p>Įrankis neturi atsiliepimų</p>
+  {% endif %}
+
+  </div>
+
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Įrankio vienetai:</h4>
