@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -50,19 +51,27 @@ class Irankis(models.Model):
     # parašyti metodą "laisvi_irankio_vienetai"
 
     # parašyti metodą, kuris tikrintų, ar konkrečiam laikotarpiui šį įrankį galima išsinuomoti
+
+
+class IrankioAtsiliepimas(models.Model):
+    irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE)
+    naudotojas = models.ForeignKey(User, on_delete=models.CASCADE)
+    atsiliepimas = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
 class IrankioVienetas(models.Model):
-    class VietoveChoices(models.TextChoices):
-        KAUNAS = "kaunas", _("Kaunas")
-        VILNIUS = "vilnius", _("Vilnius")
-        KLAIPEDA = "klaipeda", _("Klaipėda")
-        SIAULIAI = "siauliai", _("Šiauliai")
-        PANEVEZYS = "panevezys", _("Panevėžys")
+    # class VietoveChoices(models.TextChoices):
+    #     KAUNAS = "kaunas", _("Kaunas")
+    #     VILNIUS = "vilnius", _("Vilnius")
+    #     KLAIPEDA = "klaipeda", _("Klaipėda")
+    #     SIAULIAI = "siauliai", _("Šiauliai")
+    #     PANEVEZYS = "panevezys", _("Panevėžys")
 
     irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE)
     akumuliatoriaus_talpa = models.IntegerField(blank=True, null=True)
 
     # Vietovė galės būti tik iš viršuje nurodytų vietovės pasirinkimų
-    vietove = models.CharField(choices=VietoveChoices, max_length=255)
+    # vietove = models.CharField(choices=VietoveChoices, max_length=255)
     QR_kodas = models.CharField(max_length=255)
     ar_isnuomotas = models.BooleanField(default=False)
 
