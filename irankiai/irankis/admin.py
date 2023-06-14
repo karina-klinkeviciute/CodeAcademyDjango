@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from irankis.models import Irankis, NuomosFaktas, Kategorija, IrankioVienetas
+from irankis.models import Irankis, NuomosFaktas, Kategorija, IrankioVienetas, IrankioAtsiliepimas
 
 
 class IrankioVienetasAdmin(admin.ModelAdmin):
@@ -38,9 +38,14 @@ class IrankisAdmin(admin.ModelAdmin):
     inlines = [IrankioVienetasInline]
     search_fields = ('pavadinimas', )
 
+class IrankioAtsiliepimasAdmin(admin.ModelAdmin):
+    list_display = ('irankis', 'naudotojas', 'date_created')
+
 class KategorijaAdmin(admin.ModelAdmin):
     list_display = ('pavadinimas', )
 
+
+admin.site.register(IrankioAtsiliepimas, IrankioAtsiliepimasAdmin)
 admin.site.register(IrankioVienetas, IrankioVienetasAdmin)
 admin.site.register(Kategorija, KategorijaAdmin)
 admin.site.register(Irankis, IrankisAdmin)

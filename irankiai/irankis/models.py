@@ -39,7 +39,7 @@ class Irankis(models.Model):
 
     class Meta:
 
-        # kad rodytų rvarkingus lietuviškus pavadinimus
+        # kad rodytų tvarkingus lietuviškus pavadinimus
         verbose_name = "Įrankis"
         verbose_name_plural = "Įrankiai"
 
@@ -47,10 +47,10 @@ class Irankis(models.Model):
     def __str__(self):
         return self.pavadinimas
 
-    # parašyti metodą "irankio_vienetu_kiekis"
-    # parašyti metodą "laisvi_irankio_vienetai"
+    # todo parašyti metodą "irankio_vienetu_kiekis"
+    # todo parašyti metodą "laisvi_irankio_vienetai"
 
-    # parašyti metodą, kuris tikrintų, ar konkrečiam laikotarpiui šį įrankį galima išsinuomoti
+    # todo parašyti metodą, kuris tikrintų, ar konkrečiam laikotarpiui šį įrankį galima išsinuomoti
 
 
 class IrankioAtsiliepimas(models.Model):
@@ -58,6 +58,11 @@ class IrankioAtsiliepimas(models.Model):
     naudotojas = models.ForeignKey(User, on_delete=models.CASCADE)
     atsiliepimas = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Atsiliepimas"
+        verbose_name_plural = 'Atsiliepimai'
+        ordering = ['-date_created']
 
 class IrankioVienetas(models.Model):
     # class VietoveChoices(models.TextChoices):
