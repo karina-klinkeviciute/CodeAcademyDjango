@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
+from django.views.generic.edit import FormMixin
 
+from irankis.forms import AtsiliepimoForma
 from irankis.models import Irankis, IrankioVienetas
 
 
@@ -58,6 +61,27 @@ class IrankiaiView(ListView):
         context["papildoma_informacija"] = "tiesiog bet koks tekstas"
 
         return context
-class IrankisView(DetailView):
+
+
+class IrankisView(FormMixin, DetailView):
     model = Irankis
     template_name = "irankis.html"
+    form_class = AtsiliepimoForma
+
+    def get_success_url(self):
+        return reverse('irankis-detail', kwargs={'pk': self.object.id})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.irankis = self.object
+        form.instance.naudotojas = self.request.user
+        form.save()
+        return super().form_valid(form)
+

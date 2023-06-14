@@ -16,6 +16,21 @@
   <p><strong>Ar pristato:</strong> {% if irankis.pristatymas %} Taip {% else %} Ne {% endif %}</p>
 
   <div>
+    {% if user.is_authenticated %}
+      <div class="fieldWrapper">
+        <hr>
+        <h4>Palikite atsiliepimą:</h4>
+        <form action="" method="post">
+          {% csrf_token %}
+          {{ form.atsiliepimas }}
+          <input type="submit" value="Išsaugoti">
+        </form>
+      </div>
+    {% endif %}
+
+  </div>
+
+  <div>
   <h4>Atsiliepimai:</h4>
   {% if irankis.irankioatsiliepimas_set.all %}
     {% for atsiliepimas in irankis.irankioatsiliepimas_set.all %}
