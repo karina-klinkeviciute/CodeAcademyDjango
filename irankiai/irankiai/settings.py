@@ -136,6 +136,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
+STATIC_ROOT = Path(BASE_DIR / 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
@@ -155,4 +156,4 @@ EMAIL_HOST_USER = 'acedemycode@gmail.com'
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 
-STATIC_ROOT = Path(BASE_DIR / 'static')
+

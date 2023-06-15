@@ -1,0 +1,10 @@
+.irankio-pavadinimas {
+    color: green;
+    font-size: 8px;
+    text-decoration-line: none;
+}
+.irankio-pavadinimas:hover {
+    color: green;
+    text-decoration-line: none;
+}
+
