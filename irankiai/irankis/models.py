@@ -49,16 +49,14 @@ class Irankis(models.Model):
 
     # todo parašyti metodą "irankio_vienetu_kiekis"
 
-
-    # todo parašyti metodą "laisvi_irankio_vienetai"
-
     @property
     def laisvi_irankiai_count(self):
         laisvi = self.irankiovienetas_set.filter(ar_isnuomotas=False).count()
         return laisvi
 
     # todo parašyti metodą, kuris tikrintų, ar konkrečiam laikotarpiui šį įrankį galima išsinuomoti
-
+    def ar_laisvas(self, dat_nuo, data_iki):
+        raise NotImplementedError
 
 class IrankioAtsiliepimas(models.Model):
     irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE, blank=True, null=True)
