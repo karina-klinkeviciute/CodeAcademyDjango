@@ -32,11 +32,14 @@ class IrankioVienetasInline(admin.TabularInline):
 
 
 class IrankisAdmin(admin.ModelAdmin):
-    list_display = ('pavadinimas', 'galia', 'pristatymas', 'rodyti_kategorijas', 'get_naudotojo_vardas_pavarde')
+    list_display = ('pavadinimas', 'galia', 'pristatymas', 'rodyti_kategorijas',
+                    'get_naudotojo_vardas_pavarde', 'laisvi_irankiai_count')
     list_filter = ('pristatymas', )
     # čia įdedam viršuje aprašytą "inline", kad galima būtų redaguoti įrankio vienetus kartu su įrankiu
     inlines = [IrankioVienetasInline]
     search_fields = ('pavadinimas', )
+    fields = ('pavadinimas', 'galia', 'pristatymas', 'laisvi_irankiai_count')
+    readonly_fields = ('laisvi_irankiai_count', )
 
 class IrankioAtsiliepimasAdmin(admin.ModelAdmin):
     list_display = ('irankis', 'naudotojas', 'date_created')
