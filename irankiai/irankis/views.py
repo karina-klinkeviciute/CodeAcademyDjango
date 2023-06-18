@@ -48,7 +48,7 @@ class IrankiaiView(ListView):
     paginate_by = 3
 
     # jei norim, kad grąžintų tik išfiltruotus (šiuo atveju tik tuos, kurie turi pristatymą):
-    queryset = Irankis.objects.filter(pristatymas=True)
+    # queryset = Irankis.objects.filter(pristatymas=True)
 
     # def get_queryset(self):
     #
