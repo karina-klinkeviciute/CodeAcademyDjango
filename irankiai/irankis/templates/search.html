@@ -7,7 +7,7 @@
   <ul>
     {% for irankis in irankiai %}
       <li>
-        <a href="{% url 'irankis-detail' irankis.id %}">{{ irankis.pavadinimas }}</a> ({{irankis.get_naudotojo_vardas_pavarde}})
+        <a href="{% url 'irankis-detail' irankis.id %}">{{ irankis.name }}</a> ({{irankis.get_naudotojo_vardas_pavarde}})
       </li>
     {% endfor %}
   </ul>

@@ -7,22 +7,22 @@ from naudotojo_profilis.models import NaudotojoProfilis
 
 
 class Kategorija(models.Model):
-    pavadinimas = models.CharField(max_length=255)
+    name = models.CharField(verbose_name=_("name"), max_length=255)
 
     def __str__(self):
-        return self.pavadinimas
+        return self.name
 
 class Irankis(models.Model):
-    pavadinimas = models.CharField(max_length=255)
+    name = models.CharField(verbose_name=_("name"), max_length=255)
 
     # verbose name leidžia rašyti aiškesnius vartotojui rodomus laukų pavadinimus
-    aprasymas = models.TextField(verbose_name="aprašymas", blank=True, null=True)
+    description = models.TextField(verbose_name=_("description"), blank=True, null=True)
 
     # taip pat galima verbose_name nusiųsti vertimui
-    galia = models.IntegerField(verbose_name=_("elektrinio įrankio galia"), blank=True, null=True)
+    power = models.IntegerField(verbose_name=_("power of electric tool"), blank=True, null=True)
 
 
-    pristatymas = models.BooleanField()
+    delivery = models.BooleanField(verbose_name=_("delivery"))
     kategorijos = models.ManyToManyField(Kategorija)
     naudotojas = models.ForeignKey(NaudotojoProfilis, on_delete=models.CASCADE)
     nuotrauka = models.ImageField(upload_to="irankis", null=True, blank=True)
@@ -31,7 +31,7 @@ class Irankis(models.Model):
     # parašom funkciją, kuri atrenka pirmas tris kategorijas. Paskui ją naudosim Admin'e, kad ten galėtume parodyti
     # šituos dalykus sąraše
     def rodyti_kategorijas(self):
-        return ', '.join(kategorija.pavadinimas for kategorija in self.kategorijos.all()[:3])
+        return ', '.join(kategorija.name for kategorija in self.kategorijos.all()[:3])
 
     @admin.display(ordering='naudotojo_duomenys', description='Naudotojo duomenys')
     def get_naudotojo_vardas_pavarde(self):
@@ -45,7 +45,7 @@ class Irankis(models.Model):
 
     # kad admin aplinkoje (ir kitur) rodytų tvarkingai daikto pavadinimą, o ne "Irankisobject1" ar panašiai
     def __str__(self):
-        return self.pavadinimas
+        return self.name
 
     # todo parašyti metodą "irankio_vienetu_kiekis"
 
@@ -88,7 +88,7 @@ class IrankioVienetas(models.Model):
     # todo ar_isnuomotas tikrinimą pagal nuomos faktus
 
     def __str__(self):
-        return f"{self.irankis.pavadinimas} - {self.QR_kodas}"
+        return f"{self.irankis.name} - {self.QR_kodas}"
 
 class NuomosFaktas(models.Model):
     irankio_vienetas = models.ForeignKey(IrankioVienetas, on_delete=models.SET_NULL, blank=True, null=True)

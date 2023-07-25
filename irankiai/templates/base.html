@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,16 +24,16 @@
 {#                          <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">Atsijungti</a></li> - nukreips į atsijungusio vartotojo puslapį#}
           {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Prisijungti</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Registruotis</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">{% translate "Register" %}</a></li>
           {% endif %}
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
       {% block sidebar %}
         <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Pradžia</a></li>
-          <li><a href="{% url 'irankis-list' %}">Visi įrankiai</a></li>
-          <li><a href="{% url "naudotojai" %}">Visi nuomotojai</a></li>
+          <li><a href="{% url 'index' %}">{% translate "Hame" %}</a></li>
+          <li><a href="{% url 'irankis-list' %}">All tools</a></li>
+          <li><a href="{% url "naudotojai" %}">All renters</a></li>
           <li>
             <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
                 <input name="query" class="form-control" type="text" placeholder="Paieška">

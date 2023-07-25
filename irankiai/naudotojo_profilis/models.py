@@ -7,7 +7,7 @@ class NaudotojoProfilis(models.Model):
     ivertinimas = models.IntegerField()
 
     def visi_irankiai(self):
-        return ', '.join(irankis.pavadinimas for irankis in self.irankis_set.all()[:3])
+        return ', '.join(irankis.name for irankis in self.irankis_set.all()[:3])
 
     visi_irankiai.short_description = "Įrankiai"
 

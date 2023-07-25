@@ -20,7 +20,7 @@ class IrankioVienetasAdmin(admin.ModelAdmin):
         ("Papildoma informacija", {"fields": ("vietove", "QR_kodas", "ar_isnuomotas")})
     )
     # paie6ka 6iuose laukuose. "irankis_pavadinimas" yra lukas ilentelės "įrankis"
-    search_fields = ('vietove', 'irankis__pavadinimas')
+    search_fields = ('vietove', 'irankis__name')
 
 
 # padarom, kad įrannkio vienetus galima būtų pridėti ir redaguoti pridedant ar redaguojant įrankį
@@ -32,20 +32,20 @@ class IrankioVienetasInline(admin.TabularInline):
 
 
 class IrankisAdmin(admin.ModelAdmin):
-    list_display = ('pavadinimas', 'galia', 'pristatymas', 'rodyti_kategorijas',
+    list_display = ('name', 'power', 'delivery', 'rodyti_kategorijas',
                     'get_naudotojo_vardas_pavarde', 'laisvi_irankiai_count')
-    list_filter = ('pristatymas', )
+    list_filter = ('delivery', )
     # čia įdedam viršuje aprašytą "inline", kad galima būtų redaguoti įrankio vienetus kartu su įrankiu
     inlines = [IrankioVienetasInline]
-    search_fields = ('pavadinimas', )
-    fields = ('pavadinimas', 'galia', 'pristatymas', 'laisvi_irankiai_count')
+    search_fields = ('name', )
+    fields = ('name', 'power', 'delivery', 'laisvi_irankiai_count', 'naudotojas')
     readonly_fields = ('laisvi_irankiai_count', )
 
 class IrankioAtsiliepimasAdmin(admin.ModelAdmin):
     list_display = ('irankis', 'naudotojas', 'date_created')
 
 class KategorijaAdmin(admin.ModelAdmin):
-    list_display = ('pavadinimas', )
+    list_display = ('name', )
 
 
 admin.site.register(IrankioAtsiliepimas, IrankioAtsiliepimasAdmin)

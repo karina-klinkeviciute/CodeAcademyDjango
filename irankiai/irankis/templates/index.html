@@ -1,11 +1,15 @@
+
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
     <div>
     Šiuo metu turime tiek įrankių rūšių: {{ irankiu_kiekis }}
     </div>
     <div>
+    {% blocktranslate %}
     Šiuo metu turime tiek įrankių vienetų: {{ irankiu_vienetu_kiekis }}
+    {% endblocktranslate %}
     </div>
     <div>
     Apsilankėte {{ apsilankymai }} kartų

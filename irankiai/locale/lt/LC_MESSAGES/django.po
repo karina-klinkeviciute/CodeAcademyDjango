@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-24 21:28+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+
+#: irankis/models.py:10 irankis/models.py:16
+#, fuzzy
+#| msgctxt "kategorija"
+#| msgid "name"
+msgid "name"
+msgstr "kategorija"
+
+#: irankis/models.py:19
+msgid "description"
+msgstr "aprašymas"
+
+#: irankis/models.py:22
+msgid "power of electric tool"
+msgstr "elektrinio įrankio galia"
+
+#: irankis/models.py:25
+msgid "delivery"
+msgstr "pristatymas"
+
+#: irankis/templates/index.html:10
+#, python-format
+msgid ""
+"\n"
+"    Šiuo metu turime tiek įrankių vienetų: %(irankiu_vienetu_kiekis)s\n"
+"    "
+msgstr ""
+"\n"
+"    Dabar turim tiek įrankių vienetų: %(irankiu_vienetu_kiekis)s\n"
+"    "
+
+#: irankis/views.py:62
+msgid "any text"
+msgstr "kažkoks tekstas"
+
+#: templates/base.html:27
+msgid "Register"
+msgstr "Registruotis"
+
+#: templates/base.html:34
+msgid "Hame"
+msgstr "Pradinis"
+
+#~ msgctxt "irankio pavadinimas"
+#~ msgid "name"
+#~ msgstr "pavadinimas"

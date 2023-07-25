@@ -7,6 +7,7 @@ from django.views.generic.edit import FormMixin
 from irankis.forms import AtsiliepimoForma
 from irankis.models import Irankis, IrankioVienetas
 
+from django.utils.translation import gettext_lazy as _
 
 # Create your views here.
 def index(request):
@@ -58,7 +59,7 @@ class IrankiaiView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["papildoma_informacija"] = "tiesiog bet koks tekstas"
+        context["papildoma_informacija"] = _("any text")
 
         return context
 
@@ -85,3 +86,15 @@ class IrankisView(FormMixin, DetailView):
         form.save()
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+
+        laisvu_kiekis = self.object.laisvi_irankiai_count
+        if laisvu_kiekis > 0:
+            ar_yra_laisvu = True
+        else:
+            ar_yra_laisvu = False
+        data = super().get_context_data()
+
+        data["ar_yra_laisvu"] = ar_yra_laisvu
+
+        return data
