@@ -59,7 +59,7 @@ msgid "Register"
 msgstr "Registruotis"
 
 #: templates/base.html:34
-msgid "Hame"
+msgid "Home"
 msgstr "Pradinis"
 
 #~ msgctxt "irankio pavadinimas"

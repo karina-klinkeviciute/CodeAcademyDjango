@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, CreateView
 
 from irankis.forms import AtsiliepimoForma
 from irankis.models import Irankis, IrankioVienetas
@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 # Create your views here.
 def index(request):
 
-    # suskai2iuojam reikiamus duomenis
+    # suskaičiuojam reikiamus duomenis
     irankiu_kiekis = Irankis.objects.count()
     irankiu_vienetu_kiekis = IrankioVienetas.objects.count()
     apsilankymu_kiekis = request.session.get("apsilankymai", 0)
@@ -27,7 +27,7 @@ def index(request):
     }
 
     # žodynas su duomenimis per kintamąjį context sujungiamas su šablonu index ir grąžinamas į naršyklę
-    return render(request, "index.html", context=context)
+    return render(request, "irankis/index.html", context=context)
 
 
 
@@ -40,12 +40,12 @@ def search(request):
     """
     query = request.GET.get('query')
     search_results = Irankis.objects.filter(Q(pavadinimas__icontains=query) | Q(aprasymas__icontains=query))
-    return render(request, 'search.html', {'irankiai': search_results, 'query': query})
+    return render(request, 'irankis/search.html', {'irankiai': search_results, 'query': query})
 
 
 class IrankiaiView(ListView):
     model = Irankis
-    template_name = "irankiai.html"
+    template_name = "irankis/irankiai.html"
     paginate_by = 3
 
     # jei norim, kad grąžintų tik išfiltruotus (šiuo atveju tik tuos, kurie turi pristatymą):
@@ -66,7 +66,7 @@ class IrankiaiView(ListView):
 
 class IrankisView(FormMixin, DetailView):
     model = Irankis
-    template_name = "irankis.html"
+    template_name = "irankis/irankis.html"
     form_class = AtsiliepimoForma
 
     def get_success_url(self):
@@ -98,3 +98,20 @@ class IrankisView(FormMixin, DetailView):
         data["ar_yra_laisvu"] = ar_yra_laisvu
 
         return data
+
+
+class ManoIrankiaiView(ListView):
+    model = Irankis
+    template_name = "irankis/mano_irankiai.html"
+    # paginate_by = 3
+
+    def get_queryset(self):
+        prisijunges_naudotojas = self.request.user
+        mano_irankiai = Irankis.objects.filter(naudotojas__naudotojas=prisijunges_naudotojas)
+        return mano_irankiai
+
+
+class CreateIrankisView(CreateView):
+    model = Irankis
+    fields = ["name", "description", "delivery", "kategorijos", "naudotojas", "nuotrauka"]
+    success_url = '/irankiai/mano/'

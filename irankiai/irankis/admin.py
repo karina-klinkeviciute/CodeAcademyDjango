@@ -33,7 +33,7 @@ class IrankioVienetasInline(admin.TabularInline):
 
 class IrankisAdmin(admin.ModelAdmin):
     list_display = ('name', 'power', 'delivery', 'rodyti_kategorijas',
-                    'get_naudotojo_vardas_pavarde', 'laisvi_irankiai_count')
+                    'get_naudotojo_vardas_pavarde', 'laisvi_irankiai_count', 'nuotrauka')
     list_filter = ('delivery', )
     # čia įdedam viršuje aprašytą "inline", kad galima būtų redaguoti įrankio vienetus kartu su įrankiu
     inlines = [IrankioVienetasInline]
