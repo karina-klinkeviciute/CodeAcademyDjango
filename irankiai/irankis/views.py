@@ -114,12 +114,13 @@ class ManoIrankiaiView(ListView):
         mano_irankiai = Irankis.objects.filter(naudotojas__naudotojas=prisijunges_naudotojas)
         return mano_irankiai
 
-
+# LoginRequiredMixin reikalingas tam, kad šią formą galėtų matyti ir duomenis vesti tik prisijungę naudotojai
 class CreateIrankisView(LoginRequiredMixin, CreateView):
     model = Irankis
     fields = ["delivery", "name", "description",  "kategorijos", "nuotrauka"]
     success_url = '/irankiai/mano/'
 
+    # Padarom, kad naudotojo negalima būtų parinkti vedant įrankį, bet kad būtų imamas prisijungęs naudotojas
     def form_valid(self, form):
         naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
         form.instance.naudotojas = naudotojo_profilis
