@@ -165,5 +165,5 @@ EMAIL_HOST_USER = 'acedemycode@gmail.com'
 # el. pašto adresas iš kurio siųsite
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
-CRISPY_TEMPLATE_PACK = 'crispy_boostrap5'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
