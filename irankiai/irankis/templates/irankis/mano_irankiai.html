@@ -9,7 +9,9 @@
         {% if irankis.nuotrauka %}
             <a href="{{ irankis.id }}"><img src="{{ irankis.nuotrauka.url }}" width="100"></a>
         {% endif %}
-        <a href="{{ irankis.id }}" class="irankio-pavadinimas" style="font-size: 20px">{{ irankis.name }}</a> ({{irankis.naudotojas.naudotojas.first_name}})
+        <a href="{{ irankis.id }}" class="irankio-pavadinimas" style="font-size: 20px">{{ irankis.name }}</a>
+        <a href="{% url "mano-irankis-delete" irankis.id %}">Trinti</a>
+
         <div>Laisvų: {{ irankis.laisvi_irankiai_count }}</div>
       </li>
     {% endfor %}

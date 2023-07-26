@@ -1,9 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
-from django.views.generic.edit import FormMixin, CreateView
+from django.views.generic.edit import FormMixin, CreateView, DeleteView
 
 from irankis.forms import AtsiliepimoForma
 from irankis.models import Irankis, IrankioVienetas
@@ -125,3 +125,13 @@ class CreateIrankisView(LoginRequiredMixin, CreateView):
         naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
         form.instance.naudotojas = naudotojo_profilis
         return super().form_valid(form)
+
+
+class DeleteIrankisView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Irankis
+    success_url = '/irankiai/mano/'
+
+    def test_func(self):
+        irankis = self.get_object()
+        naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
+        return naudotojo_profilis == irankis.naudotojas
