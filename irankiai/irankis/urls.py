@@ -1,7 +1,7 @@
 from django.urls import path
 
 from irankis.views import index, IrankiaiView, IrankisView, search, ManoIrankiaiView, CreateIrankisView, \
-    DeleteIrankisView
+    DeleteIrankisView, UpdateIrankisView
 
 urlpatterns = [
     # 5ranki7 nuorodos
@@ -11,5 +11,6 @@ urlpatterns = [
     path("mano/", ManoIrankiaiView.as_view(), name="mano-irankis-list"),
     path("mano_create/", CreateIrankisView.as_view(), name="mano-irankis-create"),
     path("mano_delete/<int:pk>", DeleteIrankisView.as_view(), name="mano-irankis-delete"),
+    path("mano_irankis/<int:pk>/update", UpdateIrankisView.as_view(), name="mano-irankis-update"),
     path('search/', search, name='search'),
 ]

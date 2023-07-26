@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
-from django.views.generic.edit import FormMixin, CreateView, DeleteView
+from django.views.generic.edit import FormMixin, CreateView, DeleteView, UpdateView
 
 from irankis.forms import AtsiliepimoForma
 from irankis.models import Irankis, IrankioVienetas
@@ -135,3 +135,19 @@ class DeleteIrankisView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         irankis = self.get_object()
         naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
         return naudotojo_profilis == irankis.naudotojas
+
+
+class UpdateIrankisView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Irankis
+    success_url = '/irankiai/mano/'
+    fields = ["delivery", "kategorijos", ]
+
+    def test_func(self):
+        irankis = self.get_object()
+        naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
+        return naudotojo_profilis == irankis.naudotojas
+
+    def form_valid(self, form):
+        naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
+        form.instance.naudotojas = naudotojo_profilis
+        return super().form_valid(form)

@@ -11,7 +11,7 @@
         {% endif %}
         <a href="{{ irankis.id }}" class="irankio-pavadinimas" style="font-size: 20px">{{ irankis.name }}</a>
         <a href="{% url "mano-irankis-delete" irankis.id %}">Trinti</a>
-
+        <a href="{% url "mano-irankis-update" irankis.id %}">Redaguoti</a>
         <div>Laisvų: {{ irankis.laisvi_irankiai_count }}</div>
       </li>
     {% endfor %}
