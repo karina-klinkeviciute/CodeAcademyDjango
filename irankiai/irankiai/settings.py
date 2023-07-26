@@ -47,7 +47,8 @@ INSTALLED_APPS = [
 
     # third party apps
 
-
+    'crispy_forms',
+    'crispy_bootstrap5',
 
     # project apps
 
@@ -164,5 +165,5 @@ EMAIL_HOST_USER = 'acedemycode@gmail.com'
 # el. pašto adresas iš kurio siųsite
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
-
+CRISPY_TEMPLATE_PACK = 'crispy_boostrap5'
 

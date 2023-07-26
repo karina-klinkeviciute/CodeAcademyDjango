@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
@@ -8,6 +9,9 @@ from irankis.forms import AtsiliepimoForma
 from irankis.models import Irankis, IrankioVienetas
 
 from django.utils.translation import gettext_lazy as _
+
+from naudotojo_profilis.models import NaudotojoProfilis
+
 
 # Create your views here.
 def index(request):
@@ -111,7 +115,12 @@ class ManoIrankiaiView(ListView):
         return mano_irankiai
 
 
-class CreateIrankisView(CreateView):
+class CreateIrankisView(LoginRequiredMixin, CreateView):
     model = Irankis
-    fields = ["name", "description", "delivery", "kategorijos", "naudotojas", "nuotrauka"]
+    fields = ["delivery", "name", "description",  "kategorijos", "nuotrauka"]
     success_url = '/irankiai/mano/'
+
+    def form_valid(self, form):
+        naudotojo_profilis = NaudotojoProfilis.objects.get(naudotojas=self.request.user)
+        form.instance.naudotojas = naudotojo_profilis
+        return super().form_valid(form)
