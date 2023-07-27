@@ -64,5 +64,7 @@ class IrankiaiTestCase(TestCase):
         self.assertEqual(laisvi, 2)
 
     def test_irankio_vienetai(self):
+
+        # testuojam, ar gerai išsaugo ir po to suskaičiuoja įrankio vienetus
         vienetai = self.irankis.irankiovienetas_set.count()
         self.assertEqual(vienetai, 2)
