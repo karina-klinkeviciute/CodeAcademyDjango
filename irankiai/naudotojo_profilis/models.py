@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class NaudotojoProfilis(models.Model):
     naudotojas = models.ForeignKey(User, on_delete=models.CASCADE)
-    ivertinimas = models.IntegerField()
+    ivertinimas = models.IntegerField(null=True, blank=True)
 
     def visi_irankiai(self):
         return ', '.join(irankis.name for irankis in self.irankis_set.all()[:3])
