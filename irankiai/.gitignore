@@ -2,5 +2,6 @@
 db.sqlite3
 irankiai/db.sqlite3
 media
+static
 .idea
 .env

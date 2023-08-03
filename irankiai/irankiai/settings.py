@@ -31,6 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "secret_key")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True if os.getenv("DEBUG") == "True" else False
 DEBUG = True if os.getenv("DEBUG") == "True" else False
+print("DEBUG: ", DEBUG)
 ALLOWED_HOSTS = ['*']
 
 
@@ -146,7 +147,7 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
-STATIC_ROOT = Path(BASE_DIR / 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
