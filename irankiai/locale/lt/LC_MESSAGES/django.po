@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 21:28+0300\n"
+"POT-Creation-Date: 2023-08-04 16:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
 "11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
 "1 : n % 1 != 0 ? 2: 3);\n"
+
+#: irankiai/settings.py:126
+msgid "English"
+msgstr ""
+
+#: irankiai/settings.py:127
+msgid "Lithuanian"
+msgstr ""
 
 #: irankis/models.py:10 irankis/models.py:16
 #, fuzzy
@@ -39,7 +47,7 @@ msgstr "elektrinio įrankio galia"
 msgid "delivery"
 msgstr "pristatymas"
 
-#: irankis/templates/index.html:10
+#: irankis/templates/irankis/index.html:10
 #, python-format
 msgid ""
 "\n"
@@ -50,15 +58,15 @@ msgstr ""
 "    Dabar turim tiek įrankių vienetų: %(irankiu_vienetu_kiekis)s\n"
 "    "
 
-#: irankis/views.py:62
+#: irankis/views.py:66
 msgid "any text"
 msgstr "kažkoks tekstas"
 
-#: templates/base.html:27
+#: templates/base.html:41
 msgid "Register"
 msgstr "Registruotis"
 
-#: templates/base.html:34
+#: templates/base.html:48
 msgid "Home"
 msgstr "Pradinis"
 
