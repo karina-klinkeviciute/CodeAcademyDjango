@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from naudotojo_profilis.models import NaudotojoProfilis
+from naudotojo_profilis.models import NaudotojoProfilis, Naudotojas
 
 
 class Kategorija(models.Model):
@@ -60,7 +60,7 @@ class Irankis(models.Model):
 
 class IrankioAtsiliepimas(models.Model):
     irankis = models.ForeignKey(Irankis, on_delete=models.CASCADE, blank=True, null=True)
-    naudotojas = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    naudotojas = models.ForeignKey(Naudotojas, on_delete=models.CASCADE, blank=True, null=True)
     atsiliepimas = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
 

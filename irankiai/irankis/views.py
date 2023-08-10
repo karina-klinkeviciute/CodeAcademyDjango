@@ -126,6 +126,9 @@ class CreateIrankisView(LoginRequiredMixin, CreateView):
         form.instance.naudotojas = naudotojo_profilis
         return super().form_valid(form)
 
+    def post(self, request, *args, **kwargs):
+        print("aš čia")
+        vonios_skaitiklis_saltas = request.POST["vonios_skaitiklis_saltas"]
 
 class DeleteIrankisView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Irankis
