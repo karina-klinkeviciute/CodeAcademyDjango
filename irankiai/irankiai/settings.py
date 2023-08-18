@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "secret_key")
 # DEBUG = True if os.getenv("DEBUG") == "True" else False
 DEBUG = True if os.getenv("DEBUG") == "True" else False
 print("DEBUG: ", DEBUG)
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 
 # Application definition

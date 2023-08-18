@@ -25,7 +25,7 @@ urlpatterns = [
 
     path('i18n/', include('django.conf.urls.i18n')),
     # pridedam 5ranki7 nuorodas prie vis7 nuorod7
-    path('irankiai/', include('irankis.urls')),
+    path('', include('irankis.urls')),
     path('naudotojai/', include('naudotojo_profilis.urls')),
     path("pages", include("django.contrib.flatpages.urls")),
 
